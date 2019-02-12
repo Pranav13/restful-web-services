@@ -1,10 +1,22 @@
 package com.pranav.rest.webservices.restfulwebservices.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
+@ApiModel(description = "All information about the user")
 public class User {
   private Integer id;
+
+  @Size(min = 2,message = "Name should have atleat 2 character")
+  @ApiModelProperty(notes="Name should have atleat 2 character")
   private String name;
+
+  @Past
+  @ApiModelProperty(notes="Birthdate should be in the past")
   private Date birthDate;
 
   public User() {
